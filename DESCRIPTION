@@ -1,0 +1,29 @@
+Package: WLDM.standardisation
+Title: Wildlife Data Model standardisation
+Version: 0.0.0.9000
+Authors@R: person('Sarah', 'Valentin', email = 'sarah.valentin28@gmail.com', role = c('cre', 'aut'))
+Description: Create the shiny interface to standardise biodiversity data into Wildlife Data Model.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
+Imports: 
+    golem,
+    shinyjs,
+    shiny,
+    shinydashboard,
+    DT,
+    readxl,
+    tidyr,
+    dplyr,
+    stringr,
+    reshape2,
+    xlsx,
+    uuid,
+    janitor,
+    DiagrammeR,
+    rsvg,
+    htmltools,
+    lubridate,
+    anytime,
+    testthat
