@@ -27,3 +27,5 @@ Imports:
     lubridate,
     anytime,
     testthat
+URL: https://github.com/fja062/WLDM.standardisation
+BugReports: https://github.com/fja062/WLDM.standardisation/issues
