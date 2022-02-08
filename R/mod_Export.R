@@ -83,8 +83,8 @@ mod_Export_ui <- function(id) {
         width = 16,
         title = "Download dataset",
         solidHeader = TRUE,
-        collapsible = TRUE,
-        collapsed = TRUE,
+        collapsible = FALSE,
+        collapsed = FALSE,
 
         ui <- fluidPage(
           checkboxInput(ns("identifier"), "Generate a dataset identifier", FALSE),
@@ -294,7 +294,13 @@ mod_Export_server <-
 
     output$dl <- downloadHandler(
       filename = function() {
-        "WLDM_data.xlsx"
+       paste0("WLDM_", min(event_file$event_file_df$eventDate), "-",
+              max(event_file$event_file_df$eventDate), "_",
+              event_file$event_file_df$countryCode, "_",
+              "region", "_",
+              str_replace(occ_file$occ_file_df$scientificName, " ", "-"), "_",
+              event_file$event_file_df$datasetID,
+             ".xlsx")
       },
       content = function(file) {
         write.xlsx(
