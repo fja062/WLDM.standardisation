@@ -85,12 +85,25 @@ mod_Export_ui <- function(id) {
         solidHeader = TRUE,
         collapsible = FALSE,
         collapsed = FALSE,
+        column(width = 8,
+               selectInput(
+                 ns("data_type"),
+                 "Data type",
+                 choices = c(
+                   "hunting",
+                   "occurrence",
+                   "density"
+                 )
+               )
+               ),
+        column(
+          width = 4,
 
         ui <- fluidPage(
           checkboxInput(ns("identifier"), "Generate a dataset identifier", FALSE),
           downloadButton(ns("dl"), "Download")
         )
-      )
+      ))
 
     )
   )
@@ -233,6 +246,13 @@ mod_Export_server <-
 
 
     observeEvent(input$identifier, {
+      dataset_id <- UUIDgenerate(FALSE)
+      event_file$event_file_df <-
+        bind_cols(data.frame("datasetID" = dataset_id),
+                  event_file$event_file_df)
+    })
+
+        observeEvent(input$dataType, {
       dataset_id <- UUIDgenerate(FALSE)
       event_file$event_file_df <-
         bind_cols(data.frame("datasetID" = dataset_id),
