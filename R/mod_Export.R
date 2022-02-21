@@ -317,6 +317,7 @@ mod_Export_server <-
        paste0("WLDM_", min(event_file$event_file_df$eventDate), "-",
               max(event_file$event_file_df$eventDate), "_",
               event_file$event_file_df$countryCode, "_",
+              input$data_type, "_",
               "region", "_",
               str_replace(occ_file$occ_file_df$scientificName, " ", "-"), "_",
               event_file$event_file_df$datasetID,
