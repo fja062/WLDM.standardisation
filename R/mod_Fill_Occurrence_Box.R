@@ -37,7 +37,7 @@ mod_Fill_Occurrence_Box_ui <- function(id, PreFilled.box) {
                         tags$br(),
                         # Add vertical spacing
                         column(width = 6,
-                               DT::dataTableOutput(ns(
+                               shiny::dataTableOutput(ns(
                                  "tbl_occurrence_in"
                                ))),
                         column(
@@ -50,7 +50,7 @@ mod_Fill_Occurrence_Box_ui <- function(id, PreFilled.box) {
                           )
                         ),
                         column(width = 6,
-                               DT::dataTableOutput(ns(
+                               shiny::dataTableOutput(ns(
                                  "tbl_occurrence_out"
                                ))),
                         fluidRow(
@@ -93,7 +93,7 @@ mod_Fill_Occurrence_Box_ui <- function(id, PreFilled.box) {
 
 
                             column(width = 5,
-                                   DT::dataTableOutput(outputId = ns("temporal_out")))
+                                   shiny::dataTableOutput(outputId = ns("temporal_out")))
                           ),
 
                           box(
@@ -166,7 +166,7 @@ mod_Fill_Occurrence_Box_ui <- function(id, PreFilled.box) {
                             conditionalPanel(
                               condition = "input.extract_date == '1_col_manu'",
                               ns = NS(id),
-                              DT::dataTableOutput(ns('ex_df'))
+                              shiny::dataTableOutput(ns('ex_df'))
                             ),
 
 
@@ -242,7 +242,7 @@ mod_Fill_Occurrence_Box_ui <- function(id, PreFilled.box) {
                                      title = "Pre-filled standards",
                                      solidHeader = TRUE,
                                      column(width = 5,
-                                            DT::dataTableOutput(outputId = ns("spatial_out")))
+                                            shiny::dataTableOutput(outputId = ns("spatial_out")))
                                    ),
 
                                    box(
@@ -420,7 +420,7 @@ mod_Fill_Occurrence_Box_ui <- function(id, PreFilled.box) {
                             #      HTML("<b>Pre-filled standards</b>")),
 
                             column(width = 5,
-                                   DT::dataTableOutput(outputId = ns("biology_out")))
+                                   shiny::dataTableOutput(outputId = ns("biology_out")))
                           ),
 
                           box(

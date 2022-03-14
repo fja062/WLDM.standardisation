@@ -48,7 +48,7 @@ mod_Structure_ui <- function(id) {
               column(8,
 
 
-                     DT::dataTableOutput(ns(
+                     shiny::dataTableOutput(ns(
                        "darwinized_event"
                      )),),
               column(3,
@@ -83,7 +83,7 @@ mod_Structure_ui <- function(id) {
               column(8,
 
 
-                     DT::dataTableOutput(ns(
+                     shiny::dataTableOutput(ns(
                        "measurement_event"
                      )),),
               column(3,
@@ -124,7 +124,7 @@ mod_Structure_ui <- function(id) {
               column(8,
 
 
-                     DT::dataTableOutput(ns(
+                     shiny::dataTableOutput(ns(
                        "darwinized_occurrence"
                      )),),
               column(3,
@@ -158,7 +158,7 @@ mod_Structure_ui <- function(id) {
               column(8,
 
 
-                     DT::dataTableOutput(ns(
+                     shiny::dataTableOutput(ns(
                        "measurement_occurrence"
                      )),),
               column(3,
@@ -192,7 +192,7 @@ mod_Structure_ui <- function(id) {
         collapsible = TRUE,
         collapsed = FALSE,
         column(6,
-               DT::dataTableOutput(ns(
+               shiny::dataTableOutput(ns(
                  "structure_table"
                ))),
         actionButton(ns("del_entry"), "Delete fieldname", icon = icon("plus-circle"))

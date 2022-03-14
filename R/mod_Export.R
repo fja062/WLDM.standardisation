@@ -23,7 +23,7 @@ mod_Export_ui <- function(id) {
         collapsible = TRUE,
         collapsed = TRUE,
 
-        DT::dataTableOutput(ns("to_return_event"))
+        shiny::dataTableOutput(ns("to_return_event"))
 
       ),
       box(
@@ -33,7 +33,7 @@ mod_Export_ui <- function(id) {
         collapsible = TRUE,
         collapsed = TRUE,
 
-        DT::dataTableOutput(ns("to_return_occ"))
+        shiny::dataTableOutput(ns("to_return_occ"))
 
 
       ),
@@ -45,7 +45,7 @@ mod_Export_ui <- function(id) {
         collapsible = TRUE,
         collapsed = TRUE,
 
-        DT::dataTableOutput(ns("to_return_mof_event"))
+        shiny::dataTableOutput(ns("to_return_mof_event"))
 
 
       ),
@@ -58,7 +58,7 @@ mod_Export_ui <- function(id) {
         collapsed = TRUE,
 
 
-        DT::dataTableOutput(ns("to_return_mof_occ"))
+        shiny::dataTableOutput(ns("to_return_mof_occ"))
 
 
       ),

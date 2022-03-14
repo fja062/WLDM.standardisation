@@ -20,7 +20,7 @@ mod_Fill_Event_ui <- function(id){
     ),
     box(width = 12, title = "Events levels content", status = "info", solidHeader = TRUE,
 
-        column(3, DT::dataTableOutput(ns("tbl_event_fields")))),
+        column(3, shiny::dataTableOutput(ns("tbl_event_fields")))),
 
 
     mod_Fill_Event_Box_ui(ns("Fill_Event_Box_ui_1"), EmptyBox),

@@ -59,7 +59,7 @@ mod_Darwinize_ui <- function(id) {
                    h4("", class = "control-header"),
                    div(class = "control-header stats-red"),
 
-                   DT::dataTableOutput(ns("auto"))
+                   shiny::dataTableOutput(ns("auto"))
                  )),
 
                  column(1, div(
@@ -75,7 +75,7 @@ mod_Darwinize_ui <- function(id) {
                    h4("", class = "control-header"),
                    div(class = "control-header stats-red"),
 
-                   DT::dataTableOutput(ns("auto_output"))
+                   shiny::dataTableOutput(ns("auto_output"))
                  ))
 
                )),
@@ -93,12 +93,12 @@ mod_Darwinize_ui <- function(id) {
         column(2,  id = "origin", div(
           div(class = "control-header stats-red", textOutput(ns("origin_count"))),
 
-          DT::dataTableOutput(ns("original"))
+          shiny::dataTableOutput(ns("original"))
         )),
-        column(2, div(DT::dataTableOutput(ns(
+        column(2, div(shiny::dataTableOutput(ns(
           "conceptdf"
         )))),
-        column(3, div(DT::dataTableOutput(ns(
+        column(3, div(shiny::dataTableOutput(ns(
           "standard"
         )))),
         column(1, div(
@@ -117,7 +117,7 @@ mod_Darwinize_ui <- function(id) {
         column(4, div(
           #  h4("Manual Renames", class = "control-header"),
           div(class = "control-header stats-green", textOutput(ns("manual_count"))),
-          DT::dataTableOutput(ns("manualized"))
+          shiny::dataTableOutput(ns("manualized"))
         ))
       ),
 
@@ -136,7 +136,7 @@ mod_Darwinize_ui <- function(id) {
         status = "primary",
         collapsible = TRUE,
         collapsed = TRUE,
-        DT::dataTableOutput(ns("term_versions"))
+        shiny::dataTableOutput(ns("term_versions"))
       )
 
 
