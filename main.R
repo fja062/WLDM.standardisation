@@ -4,6 +4,7 @@
 # activate path to the Rtools40
 #writeLines('PATH="${RTOOLS40_HOME}\\usr\\bin;${PATH}"', con = "~/.Renviron")
 
+options(java.parameters = "-Xmx8g")
 
 library("golem")
 library("shinyjs")
@@ -27,6 +28,8 @@ library("lubridate")
 library("anytime")
 library("testthat")
 library("sf")
+
+
 
 run_app()
 
