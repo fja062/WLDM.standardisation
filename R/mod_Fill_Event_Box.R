@@ -36,7 +36,7 @@ mod_Fill_Event_Box_ui <- function(id, PreFilled.box) {
                         # Add vertical spacing
 
                         column(width = 6,
-                               shiny::dataTableOutput(ns("tbl_event_in"))),
+                               DT::dataTableOutput(ns("tbl_event_in"))),
                         column(
                           1,
                           actionButton(
@@ -47,7 +47,7 @@ mod_Fill_Event_Box_ui <- function(id, PreFilled.box) {
                           )
                         ),
                         column(width = 6,
-                               shiny::dataTableOutput(ns("tbl_event_out"))),
+                               DT::dataTableOutput(ns("tbl_event_out"))),
 
                         fluidRow(
                           style = "display:inline-block;width:100%;text-align: center;",
@@ -91,7 +91,7 @@ mod_Fill_Event_Box_ui <- function(id, PreFilled.box) {
 
 
                             column(width = 5,
-                                   shiny::dataTableOutput(outputId = ns("temporal_out")))
+                                   DT::dataTableOutput(outputId = ns("temporal_out")))
                           ),
 
                           box(
@@ -165,7 +165,7 @@ mod_Fill_Event_Box_ui <- function(id, PreFilled.box) {
                             conditionalPanel(
                               condition = "input.extract_date == '1_col_manu'",
                               ns = NS(id),
-                              shiny::dataTableOutput(ns('ex_df'))
+                              DT::dataTableOutput(ns('ex_df'))
                             ),
 
 
@@ -244,7 +244,7 @@ mod_Fill_Event_Box_ui <- function(id, PreFilled.box) {
                               title = "Pre-filled standards",
                               solidHeader = TRUE,
                               column(width = 5,
-                                     shiny::dataTableOutput(outputId = ns("spatial_out")))
+                                     DT::dataTableOutput(outputId = ns("spatial_out")))
                             ),
 
                             box(
@@ -787,10 +787,10 @@ mod_Fill_Event_Box_server <-
       # Selection list of old colnames
       selectInput(
         ns("free_col"),
-        "Standard names",
-        choices = fill_list,
+        label = "Standard names",
+        choices = unique(fill_list),
         multiple = TRUE,
-        size = 3,
+        size = 5,
         selectize = FALSE
       )
 

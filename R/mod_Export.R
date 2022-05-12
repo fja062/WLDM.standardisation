@@ -23,7 +23,7 @@ mod_Export_ui <- function(id) {
         collapsible = TRUE,
         collapsed = TRUE,
 
-        shiny::dataTableOutput(ns("to_return_event"))
+        DT::dataTableOutput(ns("to_return_event"))
 
       ),
       box(
@@ -33,7 +33,7 @@ mod_Export_ui <- function(id) {
         collapsible = TRUE,
         collapsed = TRUE,
 
-        shiny::dataTableOutput(ns("to_return_occ"))
+        DT::dataTableOutput(ns("to_return_occ"))
 
 
       ),
@@ -45,7 +45,7 @@ mod_Export_ui <- function(id) {
         collapsible = TRUE,
         collapsed = TRUE,
 
-        shiny::dataTableOutput(ns("to_return_mof_event"))
+        DT::dataTableOutput(ns("to_return_mof_event"))
 
 
       ),
@@ -58,7 +58,7 @@ mod_Export_ui <- function(id) {
         collapsed = TRUE,
 
 
-        shiny::dataTableOutput(ns("to_return_mof_occ"))
+        DT::dataTableOutput(ns("to_return_mof_occ"))
 
 
       ),
@@ -314,11 +314,13 @@ mod_Export_server <-
 
     output$dl <- downloadHandler(
       filename = function() {
-       paste0("WLDM_", min(event_file$event_file_df$eventDate), "-",
-              max(event_file$event_file_df$eventDate), "_",
-              event_file$event_file_df$countryCode, "_",
+       paste0("WLDM_",
               input$data_type, "_",
-              "region", "_",
+              event_file$event_file_df$countryCode, "_",
+              "region_",
+              min(year(dmy(str_extract(string = event_file$event_file_df$eventDate, pattern = r"(^.*(?=/))")))),
+              "-",
+              max(year(dmy(str_extract(string = event_file$event_file_df$eventDate, pattern = r"((?<=/).*$)")))), "_",
               str_replace(occ_file$occ_file_df$scientificName, " ", "-"), "_",
               event_file$event_file_df$datasetID,
              ".xlsx")

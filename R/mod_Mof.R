@@ -17,7 +17,7 @@ mod_Mof_ui <- function(id, PreFilled.box){
     box(width = 12, status = "primary", title = "Pre-filled measurements",  solidHeader = TRUE,
 
         column(width = 5,
-               shiny::dataTableOutput(outputId = ns("df_mof")))),
+               DT::dataTableOutput(outputId = ns("df_mof")))),
 
     box(width = 12, status = "primary", title = "First level measurements",  solidHeader = TRUE,
         column(width = 12,
@@ -71,7 +71,7 @@ mod_Mof_ui <- function(id, PreFilled.box){
     tags$br(),
     box(width = 12, status = "primary", title = "Measurements preview",  solidHeader = TRUE,
         column(width = 8,
-               shiny::dataTableOutput(outputId = ns("mof_output"))),
+               DT::dataTableOutput(outputId = ns("mof_output"))),
         column(width = 2, align = "center", offset = 1,
                # Print the red box 'delete' option
                actionButton(ns("delete_mof"), "Delete", icon = icon("minus-circle")))),
@@ -116,7 +116,7 @@ mod_Mof_ui <- function(id, PreFilled.box){
     box(width = 12, status = "primary", title = "Measurements of measurements preview",  solidHeader = TRUE,
 
         column(width = 8,
-               shiny::dataTableOutput(outputId = ns("mof_of_mof_df"))),
+               DT::dataTableOutput(outputId = ns("mof_of_mof_df"))),
         column(width = 2, align = "center", offset = 1,
                # Print the red box 'delete' option
                actionButton(ns("delete_mof_mof"), "Delete", icon = icon("minus-circle")))

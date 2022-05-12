@@ -13,7 +13,7 @@ mod_Fill_Occurrence_ui <- function(id){
     ),
     box(width = 12, title = "Occurrences levels fieldnames", status = "info", solidHeader = TRUE,
 
-        column(3, shiny::dataTableOutput(ns("tbl_occurrence_fields")))),
+        column(3, DT::dataTableOutput(ns("tbl_occurrence_fields")))),
 
     div(style="display:inline-block;width:100%;text-align: left;",
         mod_Fill_Occurrence_Box_ui(ns("Fill_Occurrence_Box_ui_1"), EmptyBox)),

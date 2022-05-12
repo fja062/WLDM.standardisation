@@ -1,6 +1,6 @@
 mod_dt_ui <- function(id){ # UI module
   ns = NS(id)
-  shiny::dataTableOutput(ns('x1'))
+  DT::dataTableOutput(ns('x1'))
 }
 
 
