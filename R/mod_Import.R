@@ -64,6 +64,7 @@ mod_Import_ui <- function(id) {
         solidHeader = TRUE,
         collapsible = TRUE,
         collaspsed = TRUE,
+        style = "overflow-x: scroll;",
         DTOutput(ns("tbl_analyse"))
         #    tableOutput(outputId = "content")
       ),
@@ -382,14 +383,16 @@ mod_Import_server <-
             header = F,
             nrows = 1,
             as.is = T
-          )
+          ) %>%
+          janitor::remove_empty("cols")
         df <-
           read.csv(
             file$datapath,
             skip = skip,
             sep = input$sep,
             header = F
-          )
+          ) %>%
+          janitor::remove_empty("cols")
 
         colnames(df) = headers
 
@@ -403,7 +406,8 @@ mod_Import_server <-
             sep = sep,
             nrows = 1,
             as.is = T, header = F
-          )
+          ) %>%
+          janitor::remove_empty("cols")
 
         df <-
           read.delim(
@@ -411,7 +415,8 @@ mod_Import_server <-
             skip = skip,
             sep = sep,
             header = F
-          )
+          ) %>%
+          janitor::remove_empty("cols")
 
         if (ncol(data.frame(headers[1,])) == ncol(df)) {
 
@@ -441,7 +446,8 @@ mod_Import_server <-
               skip = skip,
               sheet = sheet_name,
               n_max = n_max
-            )
+            ) %>%
+            janitor::remove_empty("cols")
 
         }
       } else {
@@ -457,15 +463,17 @@ mod_Import_server <-
 
       if (file.exists(shape_path)) {
 
-        df <-read_sf(shape_path)
+        df <-read_sf(shape_path) %>%
+          st_simplify(., dTolerance = 100) %>%
+          janitor::remove_empty()
 
         df <-df%>%
 
           mutate(footprintWKT=st_as_text(st_geometry(df)))%>%
 
-          as.data.frame()%>%
+          st_drop_geometry() %>%
+          as.data.frame()
 
-          select(-geometry)
         user_analyse$user_table <- df
 
 
@@ -547,9 +555,9 @@ mod_Import_server <-
       selectInput(
         ns("untidy_col"),
         "Untidy column",
-        choices = fill_list,
+        choices = unique(fill_list),
         multiple = TRUE,
-        size = 3,
+        size = 4,
         selectize = FALSE
       )
 
@@ -788,9 +796,9 @@ mod_Import_server <-
       selectInput(
         ns("col_2_selec"),
         "Column 2",
-        choices = fill_list,
+        choices = unique(fill_list),
         multiple = TRUE,
-        size = 3,
+        size = 4,
         selectize = FALSE
       )
     })
@@ -863,7 +871,7 @@ mod_Import_server <-
         "Column",
         choices = fill_list,
         multiple = FALSE,
-        size = 3,
+        size = 4,
         selectize = FALSE
       )
 
@@ -881,9 +889,9 @@ mod_Import_server <-
       selectInput(
         ns("val_to_convert"),
         "Initial value",
-        choices = fill_list_2,
+        choices = unique(fill_list_2),
         multiple = TRUE,
-        size = 3,
+        size = 4,
         selectize = FALSE
       )
 
