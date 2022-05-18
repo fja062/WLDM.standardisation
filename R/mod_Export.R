@@ -69,6 +69,7 @@ mod_Export_ui <- function(id) {
         solidHeader = TRUE,
         collapsible = TRUE,
         collapsed = TRUE,
+        style = "overflow-x: scroll;",
         fluidPage(
           checkboxInput(ns("visu"), "Generate visualisation", FALSE),
           htmlOutput(ns("inc"))
