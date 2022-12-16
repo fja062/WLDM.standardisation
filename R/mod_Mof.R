@@ -51,7 +51,8 @@ mod_Mof_ui <- function(id, PreFilled.box){
                  fluidRow(textInput(
                    ns("measurementUnit"),
                    "Measurement unit",
-                   NULL)),
+                   NULL
+                   )),
                  fluidRow(HTML("or")),
                  fluidRow(uiOutput(ns("create_df_2"))),
 
