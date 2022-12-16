@@ -5,6 +5,7 @@
 #writeLines('PATH="${RTOOLS40_HOME}\\usr\\bin;${PATH}"', con = "~/.Renviron")
 
 options(java.parameters = "-Xmx8g")
+options(shiny.maxRequestSize=30*1024^2)
 
 library("golem")
 library("shinyjs")
@@ -32,6 +33,7 @@ library("sf")
 
 
 run_app()
+
 
 
 #If package installation fails
